@@ -1,7 +1,7 @@
 - name: install nginx server
   ansible.builtin.package:
     name: nginx
-    staate: present
+    state: present
 
 - name: start nginx server
   ansible.builtin.service:
@@ -35,6 +35,11 @@
     src: expense.conf
     dest: /etc/nginx/default.d/expense.conf
 
+- name: restart nginx
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+
 
 # - name: import tasks from common role
 #   ansible.builtin.import_role:
@@ -47,8 +52,3 @@
 #     dest: /etc/nginx/default.d/expense.conf
 #   notify:
 #   - restart nginx
-
-- name: restart nginx
-  ansible.builtin.service:
-    name: nginx
-    state: restarted
