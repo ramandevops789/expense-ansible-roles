@@ -1,11 +1,11 @@
-[unit]
-Description = backend.service
+[Unit]
+Description = Backend Service
 
-[service]
+[Service]
 User=expense
 Environment=DB_HOST="{{ login_host }}"
-Execstart=/bin/node /app/index.js
-SyslogIdentifier=backend 
+ExecStart=/bin/node /app/index.js
+SyslogIdentifier=backend
 
-[install]
+[Install]
 WantedBy=multi-user.target
