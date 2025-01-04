@@ -16,16 +16,16 @@
   ansible.builtin.user:
     name: expense
 
-- name: import tasks from common role
-  tags:
-  - deployment
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: app-pre-req
+# - name: import tasks from common role
+#   tags:
+#   - deployment
+#   ansible.builtin.import_role:
+#     name: common
+#     tasks_from: app-pre-req
 
 - name: install dependencies
-  tags:
-  - deployment
+  # tags:
+  # - deployment
   ansible.builtin.command: npm install
   args:
     chdir: /app
@@ -52,8 +52,8 @@
     state: import
 
 - name: daemon reload
-  tags:
-  - deployment
+  # tags:
+  # - deployment
   ansible.builtin.systemd_service:
     daemon_reload: true
     state: restarted
